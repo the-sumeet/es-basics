@@ -9,7 +9,7 @@ services:
     networks:
       - es-net
     ports:
-      - '9300:9200'
+      - '9200:9200'
   kibana:
     container_name: kb-container
     image: 'docker.elastic.co/kibana/kibana:8.6.2'
