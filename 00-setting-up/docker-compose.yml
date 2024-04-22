@@ -7,9 +7,11 @@ services:
       - xpack.security.enabled=false
       - discovery.type=single-node
     networks:
-      - es-net
+      - elastic
     ports:
       - '9200:9200'
+    volumes:
+      - /home/sumeet/docker/data/elasticsearch:/usr/share/elasticsearch/data:rw
   kibana:
     container_name: kb-container
     image: 'docker.elastic.co/kibana/kibana:8.6.2'
@@ -21,6 +23,8 @@ services:
       - elasticsearch
     ports:
       - '5601:5601'
+    volumes:
+      - /home/sumeet/.config/docker/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
 networks:
-  es-net:
+  elastic:
     driver: bridge
