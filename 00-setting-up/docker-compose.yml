@@ -12,6 +12,7 @@ services:
       - '9200:9200'
     volumes:
       - /home/sumeet/docker/data/elasticsearch:/usr/share/elasticsearch/data:rw
+    restart: unless-stopped
   kibana:
     container_name: kb-container
     depends_on:
@@ -23,6 +24,7 @@ services:
       - '5601:5601'
     volumes:
       - /home/sumeet/.config/docker/kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+    restart: unless-stopped
 networks:
   elastic:
     driver: bridge
